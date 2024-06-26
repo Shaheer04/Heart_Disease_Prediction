@@ -71,7 +71,11 @@ def heart(heartdisease, smoking, alcoholdrinking, stroke, diffwalking, gender, a
          st.info("Thank you for submitting your data. We will use it to improve our model.")
 
     pred, proba = predict(df)
-    return f"We predict that you do NOT have heart disease. (But this is not medical advice!)" if pred == 1 else f"We predict that you might have heart disease. (But this is not medical advice!)"
+    if not pred:
+        return "We predict that you do NOT have heart disease. (But this is not medical advice!)"
+    else:
+        return "We predict that you MIGHT have heart disease. (But this is not medical advice!)"
+
 
 
 # UI Elements
