@@ -32,12 +32,16 @@ def g():
     model = mr.get_model("heart_model_v1", version=1)
     model_dir = model.download()
     print(f"{model_dir} I am here")
-    #model = joblib.load(model_dir)
+    model = joblib.load("heart_model\heart_model.pkl")
     preprocessing_pipeline = joblib.load("heart_model\preprocessing_pipeline.pkl")
     
-    fg = fs.get_feature_group(name="heart", version=1)
-    df = fg.read()
+    fg = fs.get_feature_group(name="heart_user_dataset", version=1)
+    df = fg.read(read_options={"use_hive": True})
 
+    if df.shape[0] == 0:
+        print("No new data to predict")
+        return
+    
     # Filter so we get only last data added
     now = datetime.now()
     diff = now - timedelta(hours=HOURS)
@@ -81,7 +85,7 @@ def g():
     print("Added confusion matrix")
 
     # Historical data
-    hist_df = monitor_fg.read()
+    hist_df = monitor_fg.read(read_options={"use_hive": True})
     concat_df = pd.concat([hist_df, monitor_df])
     dfi.export(concat_df.tail(5), f"{IMAGE_FOLDER}/df_recent_heart.png", table_conversion = 'matplotlib')
     print("Added historical data")
