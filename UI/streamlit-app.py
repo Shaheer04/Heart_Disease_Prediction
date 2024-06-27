@@ -5,4 +5,5 @@ pg = st.navigation([
     st.Page("main.py", title="Heart disease Prediction", icon="🔥"),
     #st.Page("monitor.py", title="Monitor", icon=":material/visibility:")
 ])
-pg.run()
+if __name__ == "__main__":
+    pg.run()

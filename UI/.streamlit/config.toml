@@ -2,4 +2,5 @@
 base="light"
 primaryColor="#002D62"
 secondaryBackgroundColor="#6CB4EE"
+textColor="#000000"
 font="monospace"
