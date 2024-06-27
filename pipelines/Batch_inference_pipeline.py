@@ -96,7 +96,7 @@ def g():
     concat_explain_df = concat_df.drop(columns=['timestamp'])
     
     explainer = shap.TreeExplainer(model)    
-    shap_values = explainer.shap_values(concat_explain_df, approximate=True, check_additivity=False)
+    shap_values = explainer.shap_values(concat_explain_df.values, approximate=True, check_additivity=False)
     print("Successfully trained shap")
     shap.summary_plot(shap_values[1], concat_explain_df, show=False)
     print("Created summary_plot")
