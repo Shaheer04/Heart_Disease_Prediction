@@ -1,5 +1,5 @@
 numpy
-matplotlib.pyplot
+matplotlib
 scikit-learn
 pandas
 streamlit
@@ -8,3 +8,6 @@ modal
 hopsworks
 xgboost
 joblib
+dataframe-image
+seaborn
+
