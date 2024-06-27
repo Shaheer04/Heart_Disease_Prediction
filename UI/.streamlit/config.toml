@@ -1,5 +1,5 @@
 [theme]
 base="light"
-primaryColor="blue"
-secondaryBackgroundColor="orange"
+primaryColor="#002D62"
+secondaryBackgroundColor="#6CB4EE"
 font="monospace"
