@@ -1,6 +1,4 @@
 from datetime import datetime
-import hopsworks
-import joblib
 import pandas as pd
 import numpy as np
 import streamlit as st
@@ -78,6 +76,11 @@ def heart(heartdisease, smoking, alcoholdrinking, stroke, diffwalking, gender, a
 # UI Elements
 st.title("Heart Disease Prediction")
 st.write("Please fill in the following fields to predict if you have heart disease.")
+
+with st.expander("About"):  
+    st.info("Full machine learning system that provides users with the possibility of predicting if they have a risk of heart disease.")
+    st.link_button("GitHub", "https://github.com/Shaheer04", use_container_width=True)
+    st.link_button("LinkedIn", "https://www.linkedin.com/in/shaheerjamal/", use_container_width=True)
 
 #Defining Some variables
 answer1 = ["Yes", "No", "Unknown"]

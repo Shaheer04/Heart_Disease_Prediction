@@ -32,8 +32,8 @@ def g():
     model = mr.get_model("heart_model_v1", version=1)
     model_dir = model.download()
     print(f"{model_dir} I am here")
-    model = joblib.load("../heart_model\heart_model.pkl")
-    preprocessing_pipeline = joblib.load("../heart_model\preprocessing_pipeline.pkl")
+    model = joblib.load("heart_model/heart_model.pkl")
+    preprocessing_pipeline = joblib.load("heart_model/preprocessing_pipeline.pkl")
     
     fg = fs.get_feature_group(name="heart_user_dataset", version=1)
     df = fg.read(read_options={"use_hive": True})
