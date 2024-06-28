@@ -4,7 +4,7 @@ import joblib
 import pandas as pd
 import numpy as np
 import streamlit as st
-from components.load_model import model, preprocessing_pipeline, heart_fg
+from load_model import model,preprocessing_pipeline, heart_fg
 
 
 def impute(df):
@@ -49,12 +49,14 @@ def heart(heartdisease, smoking, alcoholdrinking, stroke, diffwalking, gender, a
     # Replace Unknowns with NaNs
     # Feature pipeline has an imputer
     df = df.replace('Unknown', np.nan)
-        
-    store_data = False
+    
+    # Ensure all data types are consistent and correct
+    for column in df.columns:
+        if df[column].dtype == 'object':
+            df[column] = df[column].astype('category')
 
     if heartdisease != "Unknown":
         df = impute(df)
-
         df['heart_disease'] = np.float64(heartdisease == "Yes")
         df['timestamp'] = pd.to_datetime(datetime.now())
         # Hacky fix due to Hopsworks Magic
@@ -62,20 +64,15 @@ def heart(heartdisease, smoking, alcoholdrinking, stroke, diffwalking, gender, a
         
         try:
             heart_fg.insert(df, write_options={"wait_for_job": False})
+            st.info("Thank you for submitting your data. We will use it to improve our model.")
         except Exception as e:
             st.error(f"An error occurred: {e}")
-
-        store_data = True
-    
-    if store_data:
-         st.info("Thank you for submitting your data. We will use it to improve our model.")
 
     pred, proba = predict(df)
     if not pred:
         return "We predict that you do NOT have heart disease. (But this is not medical advice!)"
     else:
         return "We predict that you MIGHT have heart disease. (But this is not medical advice!)"
-
 
 
 # UI Elements

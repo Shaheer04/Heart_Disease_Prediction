@@ -1,5 +1,6 @@
 import hopsworks
 import joblib
+import xgboost as xgb
 
 
 # Connect to the Feature Store
@@ -14,6 +15,8 @@ model = mr.get_model("heart_model_v1", version=1)
 model_dir = model.download()
 
 #Load Model and Preprocessing Pipeline
+#booster = xgb.Booster()
+#model = booster.load_model("../heart_model/heart_model.pkl")
 model = joblib.load("../heart_model/heart_model.pkl")
 preprocessing_pipeline = joblib.load("../heart_model/preprocessing_pipeline.pkl")
 print("Model downloaded")

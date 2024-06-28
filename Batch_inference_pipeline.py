@@ -32,8 +32,8 @@ def g():
     model = mr.get_model("heart_model_v1", version=1)
     model_dir = model.download()
     print(f"{model_dir} I am here")
-    model = joblib.load("heart_model\heart_model.pkl")
-    preprocessing_pipeline = joblib.load("heart_model\preprocessing_pipeline.pkl")
+    model = joblib.load("../heart_model\heart_model.pkl")
+    preprocessing_pipeline = joblib.load("../heart_model\preprocessing_pipeline.pkl")
     
     fg = fs.get_feature_group(name="heart_user_dataset", version=1)
     df = fg.read(read_options={"use_hive": True})
@@ -96,7 +96,7 @@ def g():
     concat_explain_df = concat_df.drop(columns=['timestamp'])
     
     explainer = shap.TreeExplainer(model)    
-    shap_values = explainer.shap_values(concat_explain_df.values, approximate=True, check_additivity=False)
+    shap_values = explainer.shap_values(concat_explain_df, approximate=True, check_additivity=False)
     print("Successfully trained shap")
     shap.summary_plot(shap_values[1], concat_explain_df, show=False)
     print("Created summary_plot")
