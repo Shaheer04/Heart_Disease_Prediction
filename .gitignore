@@ -1,2 +1,3 @@
 .venv/
 UI/featurestore.key
+UI/.streamlit/secrets.toml
