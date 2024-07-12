@@ -3,7 +3,7 @@ import joblib
 import streamlit as st
 
 
-Hopswork_key = st.secrets[ 'API_KEY']
+Hopswork_key = st.secrets['API_KEY']
 # Connect to the Feature Store
 project = hopsworks.login(api_key_file='featurestore.key', project='heartdisease')
 print("Connected to the Feature Store")

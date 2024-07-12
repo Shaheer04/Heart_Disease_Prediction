@@ -2,7 +2,7 @@ from datetime import datetime
 import pandas as pd
 import numpy as np
 import streamlit as st
-from load_model import model,preprocessing_pipeline, heart_fg
+from load_model import model ,preprocessing_pipeline, heart_fg
 
 
 def impute(df):
