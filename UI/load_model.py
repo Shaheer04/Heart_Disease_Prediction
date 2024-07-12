@@ -18,8 +18,8 @@ model_dir = model.download()
 #Load Model and Preprocessing Pipeline
 #booster = xgb.Booster()
 #model = booster.load_model("../heart_model/heart_model.pkl")
-model = joblib.load("/Heart_Disease_Prediction/heart_model/heart_model.pkl")
-preprocessing_pipeline = joblib.load("/Heart_Disease_Prediction/heart_model/preprocessing_pipeline.pkl")
+model = joblib.load("./heart_model/heart_model.pkl")
+preprocessing_pipeline = joblib.load("./heart_model/preprocessing_pipeline.pkl")
 print("Model Loaded Successfully!")
 
 columns = ['smoking','alcohol_drinking','stroke','diff_walking','sex','age_category','race','diabetic','physical_activity','gen_health','asthma','kidney_disease','skin_cancer','b_m_i','mental_health','physical_health','sleep_time']
