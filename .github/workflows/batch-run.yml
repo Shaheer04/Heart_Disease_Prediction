@@ -23,7 +23,7 @@ jobs:
           pip install pandas scikit-learn==1.3.2 joblib xgboost hopsworks python-dotenv 
 
       - name: Run batch inference file
-        run: python batch_inference.py
+        run: python Batch_inference_pipeline.py
         env:
           HOURS: 24
           HOPSWORKS_KEY : ${{ secrets.HOPSWORKS_KEY }}
