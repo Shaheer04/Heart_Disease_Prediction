@@ -2,7 +2,7 @@ name: Batch inference run
 
 on:
   schedule:
-    - cron: '0 * * * *'  # the cron expression '0 0 * * *' translates to running the workflow at midnight every day./ '0 * * * *' translates to running the workflow every hour
+    - cron: '0 0 * * *'  # the cron expression '0 0 * * *' translates to running the workflow at midnight every day./ '0 * * * *' translates to running the workflow every hour
 
 jobs:
   batch-inference:
