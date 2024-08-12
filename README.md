@@ -33,7 +33,7 @@ GitHub Actions for CI/CD
 
 Hopsworks store for model and feature storage
 
-Streamlit for UI and deoployment
+Streamlit for UI and deployment
 
 ## Disclaimer
 Please note that the predictions made by this application are based on machine learning models trained on historical data. They should not be considered as medical advice. Always consult a healthcare professional for any medical concerns or decisions.
